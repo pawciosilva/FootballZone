@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  config.params["APIkey"] = process.env.REACT_APP_API_KEY;
+  config.params["APIkey"] = "fd79d9ecc12193219db435b6f6e057a611f87a3633dafe7111ab10e2ab010d32";
   return config;
 });
 
