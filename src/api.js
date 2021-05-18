@@ -35,16 +35,10 @@ export const getTeams = (leagueId) => {
   return instance.get("", { params });
 };
 
-export const getLiveScores = ({ countryId, leagueId, matchId } = {}) => {
+export const getLiveScores = (leagueId) => {
   const params = { met: "Livescore" };
-  if (countryId) {
-    params.countryId = countryId;
-  }
   if (leagueId) {
     params.leagueId = leagueId;
-  }
-  if (matchId) {
-    params.matchId = matchId;
   }
   return instance.get("", { params });
 };
