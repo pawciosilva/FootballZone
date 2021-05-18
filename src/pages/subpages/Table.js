@@ -24,38 +24,61 @@ export default function Table() {
     }, [leagueKey]);
 
     return (
-        <>
-            <div class="container-lg">
-                <h1>Table</h1>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col" className='text-left'>Position</th>
-                            <th scope="col" className='text-center'>Team</th>
-                            <th scope="col" className='text-center'>Points</th>
-                            <th scope="col" className='text-center'>W</th>
-                            <th scope="col" className='text-center'>D</th>
-                            <th scope="col" className='text-center'>L</th>
-                            <th scope="col" className='text-center'>Goal Diffrence</th>
-                        </tr>
-                    </thead>
-                {teams && teams.map((team) => {
+      <>
+        <div className="container my-5 text-center">
+          <div className="row justify-content-center">
+            <div className="col-md-12 col-lg-10">
+              <h1 className="title-h1">Table</h1>
+              <table class="table mt-4" id="league-table">
+                <thead>
+                  <tr>
+                    <th scope="col" className="text-center">
+                      Position
+                    </th>
+                    <th scope="col" className="text-center">
+                      Team
+                    </th>
+                    <th scope="col" className="text-center">
+                      Points
+                    </th>
+                    <th scope="col" className="text-center">
+                      W
+                    </th>
+                    <th scope="col" className="text-center">
+                      D
+                    </th>
+                    <th scope="col" className="text-center">
+                      L
+                    </th>
+                    <th scope="col" className="text-center">
+                      Goal Diffrence
+                    </th>
+                  </tr>
+                </thead>
+                {teams &&
+                  teams.map((team) => {
                     return (
-                        <tbody>
-                            <tr>
-                                <td className='text-left'>{team.standing_place}.</td>
-                                <td className='text-center'>{team.standing_team}</td>
-                                <td className='text-center'>{team.standing_PTS}</td>
-                                <td className='text-center'>{team.standing_W}</td>
-                                <td className='text-center'>{team.standing_D}</td>
-                                <td className='text-center'>{team.standing_L}</td>
-                                <td className='text-center'>{team.standing_GD}</td>
-                            </tr>
-                        </tbody>
-                    )
-                })}
-                </table>
+                      <tbody>
+                        <tr>
+                          <td className="text-center fw-bold">
+                            {team.standing_place}.
+                          </td>
+                          <td className="text-center fw-bold">
+                            {team.standing_team}
+                          </td>
+                          <td className="text-center">{team.standing_PTS}</td>
+                          <td className="text-center">{team.standing_W}</td>
+                          <td className="text-center">{team.standing_D}</td>
+                          <td className="text-center">{team.standing_L}</td>
+                          <td className="text-center">{team.standing_GD}</td>
+                        </tr>
+                      </tbody>
+                    );
+                  })}
+              </table>
             </div>
-        </>
+          </div>
+        </div>
+      </>
     );
 }

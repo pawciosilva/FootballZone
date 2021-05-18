@@ -29,13 +29,13 @@ export default function UpcomingMatches() {
 
     return (
         <>
-            <div class="container-lg">
-                <h1>Upcoming matches</h1>
+            <div className="container my-5 text-center">
+                <h1 className="title-h1">Upcoming Matches</h1> 
                 {matches && matches.map((match) => {
                     return (
                         <p>{match.event_home_team} - {match.event_away_team}</p>
                     )
-                })}
+                })} 
             </div>
         </>
     );
