@@ -7,10 +7,10 @@ export const HeaderComponent = () => {
     return(
         <div className="container">
             <div className="text-center">
-                <img src={logo} className="img-fluid" alt="HeaderImage"></img>  
-            </div>
+                <img id="headerPhoto" src={logo} className="img-fluid" alt="HeaderImage"></img>  
+            </div> 
 
-            <nav className="navbar navbar-expand-lg navbar-dark" style={{borderRadius: '5px' ,backgroundImage: `linear-gradient(to right, #000428, #004e92)`}}>
+            <nav  id="headerNavBar"className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
                     <NavLink className="navbar-brand" to="/" >FootballZone</NavLink>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

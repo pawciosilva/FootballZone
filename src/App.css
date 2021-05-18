@@ -28,6 +28,15 @@
   color: #61dafb;
 }
 
+#headerPhoto {
+  max-width: 70%;
+}
+
+#headerNavBar{
+  border-radius: 5px;
+  background-image: linear-gradient(to right, #000428, #004e92);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
