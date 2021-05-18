@@ -1,13 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import logo from './logo.jpg'
+import logo from '../assets/logo.jpg'
 
 
 export const HeaderComponent = () => {
     return(
         <div className="container">
             <div className="text-center">
-                <img src={logo} className="img-fluid" alt="HeaderImage" ></img>  
+                <img src={logo} className="img-fluid" alt="HeaderImage"></img>  
             </div>
 
             <nav className="navbar navbar-expand-lg navbar-dark" style={{borderRadius: '5px' ,backgroundImage: `linear-gradient(to right, #000428, #004e92)`}}>
@@ -31,7 +31,7 @@ export const HeaderComponent = () => {
                                 <NavLink className="nav-link" to="/premierleague">Premier League</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/bundesliga">Bundesliga</NavLink>
+                                <NavLink className="nav-link" to="/bundesliga">Budesliga</NavLink>
                             </li>
                         </ul>
                     </div>

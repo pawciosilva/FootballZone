@@ -1,7 +1,7 @@
 export default function PlayersStatistics() {
     return (
         <>
-            <div>
+            <div className='text-center'>
                 <h1>Players Statistics</h1>  
             </div>
         </>

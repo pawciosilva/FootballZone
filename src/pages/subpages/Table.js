@@ -25,31 +25,31 @@ export default function Table() {
 
     return (
         <>
-            <div>
+            <div class="container-lg">
                 <h1>Table</h1>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Position</th>
-                            <th scope="col">Team</th>
-                            <th scope="col">Points</th>
-                            <th scope="col">W</th>
-                            <th scope="col">D</th>
-                            <th scope="col">L</th>
-                            <th scope="col">Goal Diffrence</th>
+                            <th scope="col" className='text-left'>Position</th>
+                            <th scope="col" className='text-center'>Team</th>
+                            <th scope="col" className='text-center'>Points</th>
+                            <th scope="col" className='text-center'>W</th>
+                            <th scope="col" className='text-center'>D</th>
+                            <th scope="col" className='text-center'>L</th>
+                            <th scope="col" className='text-center'>Goal Diffrence</th>
                         </tr>
                     </thead>
                 {teams && teams.map((team) => {
                     return (
                         <tbody>
                             <tr>
-                                <td>{team.standing_place}.</td>
-                                <td>{team.standing_team}</td>
-                                <td>{team.standing_PTS}</td>
-                                <td>{team.standing_W}</td>
-                                <td>{team.standing_D}</td>
-                                <td>{team.standing_L}</td>
-                                <td>{team.standing_GD}</td>
+                                <td className='text-left'>{team.standing_place}.</td>
+                                <td className='text-center'>{team.standing_team}</td>
+                                <td className='text-center'>{team.standing_PTS}</td>
+                                <td className='text-center'>{team.standing_W}</td>
+                                <td className='text-center'>{team.standing_D}</td>
+                                <td className='text-center'>{team.standing_L}</td>
+                                <td className='text-center'>{team.standing_GD}</td>
                             </tr>
                         </tbody>
                     )
