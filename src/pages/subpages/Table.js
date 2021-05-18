@@ -28,7 +28,6 @@ export default function Table() {
         <div className="container my-5 text-center">
           <div className="row justify-content-center">
             <div className="col-md-12 col-lg-10">
-              <h1 className="title-h1">Table</h1>
               <table class="table mt-4" id="league-table">
                 <thead>
                   <tr>

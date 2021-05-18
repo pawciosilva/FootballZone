@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .body-app {
   width: 70vw;
   margin: 0 auto;
@@ -113,5 +112,8 @@
 #league-table tbody tr td{
   border-bottom: 2px solid rgb(228, 228, 228);
   border-radius: 2px;
-  
+}
+
+.upcoming-img {
+  width: 25%;
 }

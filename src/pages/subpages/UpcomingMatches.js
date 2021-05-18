@@ -30,12 +30,34 @@ export default function UpcomingMatches() {
     return (
         <>
             <div className="container my-5 text-center">
-                <h1 className="title-h1">Upcoming Matches</h1> 
-                {matches && matches.map((match) => {
-                    return (
-                        <p>{match.event_home_team} - {match.event_away_team}</p>
-                    )
-                })} 
+                <div className="row justify-content-center">
+                    <div className="col-md-12 col-lg-10">
+                        <table class="table mt-4" id="league-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" className="text-center">Date</th>
+                                    <th scope="col" className="text-center">Hour</th>
+                                    <th scope="col" className="text-center">Teams</th>
+                                    <th scope="col" className="text-center">Round</th>
+                                </tr>
+                            </thead>
+                        {matches && matches.map((match) => {
+                            return (
+                                <tbody>
+                                    <tr>
+                                        <td className="text-center align-middle">{match.event_date}</td>
+                                        <td className="text-center align-middle">{match.event_time}</td>
+                                        <td className="text-center fw-bold align-middle">
+                                            <img className="upcoming-img mx-2" src={match.home_team_logo} style={{width: "35px"}} alt="logo"></img>{match.event_home_team} - {match.event_away_team}<img className="upcoming-img mx-2" src={match.away_team_logo} style={{width: "35px"}} alt="logo"></img>  
+                                        </td>
+                                        <td className="text-center align-middle">{match.league_round}</td>
+                                    </tr>
+                                </tbody>
+                            )
+                        })} 
+                        </table>
+                    </div>
+                </div>
             </div>
         </>
     );

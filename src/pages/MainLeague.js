@@ -9,13 +9,12 @@ import UpcomingMatches from "./subpages/UpcomingMatches";
 export default function MainLeague() {
     const location = useLocation();
 
-    let leagueName = "";
     let leagueUrl = "";
-    if(location.pathname.includes("bundesliga")) { leagueName="Bundesliga"; leagueUrl="/bundesliga"; }
-    if(location.pathname.includes("ligue1")) { leagueName="Ligue 1"; leagueUrl="/ligue1"}
-    if(location.pathname.includes("seriea")) { leagueName="Serie A"; leagueUrl="/seriea"}
-    if(location.pathname.includes("laliga")) { leagueName="La Liga"; leagueUrl="/laliga"}
-    if(location.pathname.includes("premierleague")) { leagueName="Premier League"; leagueUrl="/premierleague"}
+    if(location.pathname.includes("bundesliga")) { leagueUrl="/bundesliga"; }
+    if(location.pathname.includes("ligue1")) { leagueUrl="/ligue1"}
+    if(location.pathname.includes("seriea")) { leagueUrl="/seriea"}
+    if(location.pathname.includes("laliga")) { leagueUrl="/laliga"}
+    if(location.pathname.includes("premierleague")) { leagueUrl="/premierleague"}
 
     return (
       <div className="container px-3 mt-0">
