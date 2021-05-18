@@ -1,9 +1,9 @@
 export default function PlayersStatistics() {
     return (
-        <>
-            <div className='text-center'>
-                <h1>Players Statistics</h1>  
-            </div>
-        </>
+      <>
+        <div className="container my-5 text-center">
+          <h1 className="title-h1">Players Statistics</h1>
+        </div>
+      </>
     );
 }

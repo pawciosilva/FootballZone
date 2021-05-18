@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+
+.body-app {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 1600px) {
+  .body-app {
+    width: 100%;
+  }
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -37,6 +49,20 @@
   background-image: linear-gradient(to right, #000428, #004e92);
 }
 
+#headerNavBar a.active{
+  font-weight: bold;
+  position: relative;
+}
+
+#headerNavBar a.active::after {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid rgb(60, 98, 142);
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -44,4 +70,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+#league-navbar {
+  background-color: #ccc;
+  border-radius: 0 0 10px 10px;
+  background-image: linear-gradient(to right, #4d74a7, #4f8bc0);;
+}
+
+#league-navbar a.active {
+  font-weight: bold;
+}
+
+#league-navbar ul {
+  flex-direction: row;
+}
+
+#league-navbar li {
+  width: 25%;
+}
+
+#league-navbar a {
+  color: white;
+}
+
+.title-h1{
+  font-weight: bold;
+  color: #003670;
+}
+#league-table td{
+  border: unset ;
+  border-collapse: separate;
+}
+
+#league-table thead tr th {
+  border: 2px solid #4e80b4;
+  border-radius: 7px;
+
+}
+
+#league-table tbody tr td{
+  border-bottom: 2px solid rgb(228, 228, 228);
+  border-radius: 2px;
+  
 }

@@ -43,35 +43,35 @@ export const getLiveScores = (leagueId) => {
   return instance.get("", { params });
 };
 
-export const getFixtures = ({
-  startDate,
+export const getFixtures = (
+  startDate = new Date(),
   endDate = new Date(),
-  countryId,
+  // countryId,
   leagueId,
-  matchId,
-  teamId,
-}) => {
+  // matchId,
+  // teamId,
+) => {
   const params = { met: "Fixtures" };
-  if (matchId) {
-    params.matchId = matchId;
-    return instance.get("", { params });
-  }
-  const isOtherParams = countryId && leagueId && teamId;
-  const { from, to } = getDateParams(startDate, endDate, isOtherParams);
+  // if (matchId) {
+  //   params.matchId = matchId;
+  //   return instance.get("", { params });
+  // }
+  //const isOtherParams = countryId && leagueId && teamId;
+  const { from, to } = getDateParams(startDate, endDate)//, isOtherParams);
 
   params.from = from;
   params.to = to;
 
-  if (countryId) {
-    params.countryId = countryId;
-  }
+  // if (countryId) {
+  //   params.countryId = countryId;
+  // }
   if (leagueId) {
     params.leagueId = leagueId;
   }
-  if (teamId) {
-    params.teamId = teamId;
-  }
-
+  // if (teamId) {
+  //   params.teamId = teamId;
+  // }
+  console.log(params);
   return instance.get("", { params });
 };
 
@@ -81,23 +81,23 @@ export const getTeamComparison = (firstTeamId, secondTeamId) => {
   params.secondTeamId = secondTeamId;
   return instance.get("", { params });
 };
-
-const getDateParams = (startDate, endDate, isOtherParams) => {
+//, isOtherParams) =>
+const getDateParams = (startDate, endDate) => {
   if (!startDate) {
     throw new Error("StartDate must be specified");
   }
   if (startDate > endDate) {
     throw new Error("StartDate cannot occur later than endDate");
   }
-  if (!isOtherParams) {
-    const difference = endDate.getTime() - startDate.getTime();
-    const daysDifference = Math.round(difference / (1000 * 3600 * 24));
-    if (daysDifference > 15) {
-      throw new Error(
-        "If there are no other parameters specified, date range must be less than 15 days"
-      );
-    }
-  }
+  // if (!isOtherParams) {
+  //   const difference = endDate.getTime() - startDate.getTime();
+  //   const daysDifference = Math.round(difference / (1000 * 3600 * 24));
+  //   if (daysDifference > 15) {
+  //     throw new Error(
+  //       "If there are no other parameters specified, date range must be less than 15 days"
+  //     );
+  //   }
+  // }
   return { from: formatDate(startDate), to: formatDate(endDate) };
 };
 const formatDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
