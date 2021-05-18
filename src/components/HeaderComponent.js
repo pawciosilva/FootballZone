@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import logo from '../assets/logo.jpg'
 
 
@@ -10,9 +10,9 @@ export const HeaderComponent = () => {
                 <img id="headerPhoto" src={logo} className="img-fluid" alt="HeaderImage"></img>  
             </div> 
 
-            <nav  id="headerNavBar"className="navbar navbar-expand-lg navbar-dark">
+            <nav  id="headerNavBar" className="navbar navbar-expand-lg navbar-dark">
                 <div className="container-fluid">
-                    <NavLink className="navbar-brand" to="/" >FootballZone</NavLink>
+                    <Link className="navbar-brand" to="/" >FootballZone</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
