@@ -48,7 +48,7 @@ export default function UpcomingMatches() {
                                         <td className="text-center align-middle">{match.event_date}</td>
                                         <td className="text-center align-middle">{match.event_time}</td>
                                         <td className="text-center fw-bold align-middle">
-                                            <img className="upcoming-img mx-2" src={match.home_team_logo} style={{width: "35px"}} alt="logo"></img>{match.event_home_team} - {match.event_away_team}<img className="upcoming-img mx-2" src={match.away_team_logo} style={{width: "35px"}} alt="logo"></img>  
+                                            <img class="upcoming-img mx-2" src={match.home_team_logo} alt="logo"></img>{match.event_home_team} - {match.event_away_team}<img class="upcoming-img mx-2" src={match.away_team_logo} alt="logo"></img>  
                                         </td>
                                         <td className="text-center align-middle">{match.league_round}</td>
                                     </tr>
