@@ -8,6 +8,7 @@ export default function LiveMatches() {
     const [liveMatches, setLiveMatches] = useState([]);
     const [leagueTeams, setLeaguesTeams] = useState([])
     const location = useLocation();
+    const [color, setColor] = useState("red");
 
     let leagueKey = 0;
     let leagueURL = "";
@@ -23,22 +24,31 @@ export default function LiveMatches() {
                 console.error(err);
             });
             console.log(result);
-            setLiveMatches(result.data.result);       
+            setLiveMatches(result.data.result); 
+            if(color ==='red') 
+                setColor('grey');   
+            else
+            setColor('red');
         };
+        fetchData();
+    },[color,leagueKey]);
 
+    useEffect(() => {
         const getLeagueTeams = async () => {
             const result = await getTeams(leagueKey).catch((err)=>{
                 console.log(err);
             })
             setLeaguesTeams(result.data.result)
         };
-        fetchData();
         getLeagueTeams();
         
     }, [leagueKey]);
     return (
         <>
             <div className="container my-5 text-center">
+                <div style={{color: color}}>
+                asdas
+                </div>
                 <div className="row justify-content-center">
                     <div className="col-md-12 col-lg-10">
                         {!liveMatches && (
@@ -57,7 +67,7 @@ export default function LiveMatches() {
                           return(
                               
                               <>                            
-                              <div key={match.event_key} id="containerLive" className="container my-5">
+                              <div id="containerLive" className="container my-5">
                                     <div className="row mx-auto my-1" id="headerLive">
                                         <div id="teaLive"className="text-center col-5 fw-bold align-middle" >{match.event_home_team}</div>
                                         <div id="resultLive" className=" text-center col-2 align-middle">{match.event_final_result}</div>
@@ -103,7 +113,7 @@ export default function LiveMatches() {
                                         <div id="placeLive"className="col-6 my-1"><i class="fa fa-map-marker" aria-hidden="true"></i> {match.event_stadium}</div>
                                     </div>    
                               </div>
-                              
+                                
                               </>
                           )
                        })}                     
