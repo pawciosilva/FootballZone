@@ -19,6 +19,39 @@ export const getLeagues = (countryId) => {
   return instance.get("", { params });
 };
 
+export const getPlayer = (playerId) => {
+  const params = { met: "Players", playerId };
+
+  return instance.get("", { params });
+};
+
+export const getTopScorersWithStats = async (leagueId) => {
+  const topScorerResponse = await getTopScorers(leagueId);
+  const playerIds = topScorerResponse.data.result.map((player) => player.player_key).slice(0, 20);
+
+  const teamResponse = await getTeams(leagueId);
+  const teamIds = teamResponse.data.result.map((team) => team.team_key);
+
+  const topScorers = [];
+  for (const id of playerIds) {
+    const response = await getPlayer(id);
+    const result = response.data.result;
+    const topScorer = result.find((player) => teamIds.includes(player.team_key));
+    if (!topScorer) continue;
+
+    const logoName = topScorer.team_name.replace(/\s+/g, "-").toLowerCase();
+    topScorer.team_logo = `https://allsportsapi.com/logo/${topScorer.team_key}_${logoName}`;
+    topScorers.push(topScorer);
+  }
+  return topScorers.sort((a, b) => b.player_goals - a.player_goals);
+};
+
+const getTopScorers = (leagueId) => {
+  const params = { met: "Topscorers", leagueId };
+
+  return instance.get("", { params });
+};
+
 export const getStandings = (leagueId) => {
   const params = { met: "Standings" };
   if (leagueId) {
@@ -47,7 +80,7 @@ export const getFixtures = (
   startDate = new Date(),
   endDate = new Date(),
   // countryId,
-  leagueId,
+  leagueId
   // matchId,
   // teamId,
 ) => {
@@ -57,7 +90,7 @@ export const getFixtures = (
   //   return instance.get("", { params });
   // }
   //const isOtherParams = countryId && leagueId && teamId;
-  const { from, to } = getDateParams(startDate, endDate)//, isOtherParams);
+  const { from, to } = getDateParams(startDate, endDate); //, isOtherParams);
 
   params.from = from;
   params.to = to;
