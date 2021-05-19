@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Route, useLocation } from "react-router";
+import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import { getLiveScores } from "../../api";
+import { getLiveScores, getTeams } from "../../api";
 
 export default function LiveMatches() {
 
     const [liveMatches, setLiveMatches] = useState([]);
+    const [leagueTeams, setLeaguesTeams] = useState([])
     const location = useLocation();
 
     let leagueKey = 0;
@@ -21,9 +22,19 @@ export default function LiveMatches() {
             const result = await getLiveScores(leagueKey).catch((err) => {
                 console.error(err);
             });
-            setLiveMatches(result.data.result);              
+            console.log(result);
+            setLiveMatches(result.data.result);       
+        };
+
+        const getLeagueTeams = async () => {
+            const result = await getTeams(leagueKey).catch((err)=>{
+                console.log(err);
+            })
+            setLeaguesTeams(result.data.result)
         };
         fetchData();
+        getLeagueTeams();
+        
     }, [leagueKey]);
     return (
         <>
@@ -38,12 +49,65 @@ export default function LiveMatches() {
                             <h5 className="title-h1">       
                                 No matches currently being played.
                                 <br />
-                                <NavLink  className="nav-link" to={leagueURL + "/upcoming"}>Check following matches! </NavLink>
+                                <NavLink  className="nav-link" to={leagueURL + "/upcoming"}>Check following matches!</NavLink>
                             </h5>
                         </>
                         )}  
+                       {liveMatches && liveMatches.map((match)=>{
+                          return(
+                              
+                              <>                            
+                              <div key={match.event_key} id="containerLive" className="container my-5">
+                                    <div className="row mx-auto my-1" id="headerLive">
+                                        <div id="teaLive"className="text-center col-5 fw-bold align-middle" >{match.event_home_team}</div>
+                                        <div id="resultLive" className=" text-center col-2 align-middle">{match.event_final_result}</div>
+                                        <div id="teamLive" className=" text-center col-5 fw-bold align-middle">{match.event_away_team}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1 align-middle">{match.statistics[0].home}</div>
+                                        <div className="text-center col-6 my-1 align-middle">{match.statistics[0].type}</div>
+                                        <div className="text-center col-3 my-1 align-middle">{match.statistics[0].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1">{match.statistics[1].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[1].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[1].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1">{match.statistics[2].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[2].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[2].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1">{match.statistics[3].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[3].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[3].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1">{match.statistics[5].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[5].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[5].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div  className="text-center col-3 my-1">{match.statistics[6].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[6].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[6].away}</div>
+                                    </div>
+                                    <div className="row w-75 mx-auto">
+                                        <div className="text-center col-3 my-1">{match.statistics[10].home}</div>
+                                        <div className="text-center col-6 my-1">{match.statistics[10].type}</div>
+                                        <div className="text-center col-3 my-1">{match.statistics[10].away}</div>
+                                    </div>
+                                    <div id="liveFooter" className="row mx-auto">
+                                        <div id="timeLive"className="col-6 my-1"><i class="fa fa-clock-o" aria-hidden="true"></i> {match.event_time}</div>
+                                        <div id="placeLive"className="col-6 my-1"><i class="fa fa-map-marker" aria-hidden="true"></i> {match.event_stadium}</div>
+                                    </div>    
+                              </div>
+                              
+                              </>
+                          )
+                       })}                     
                     </div>
-                    
                 </div>
                 
             </div>

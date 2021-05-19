@@ -62,6 +62,37 @@
   border-bottom: 2px solid rgb(60, 98, 142);
 }
 
+#headerLive{
+  background-image: linear-gradient(to right, #000428, #004e92);
+  border-radius: 7px;
+  border-bottom: none;  
+  color: white;
+}
+
+#liveFooter{
+  border-width: 2px;
+  border-style: solid;
+  border-image: linear-gradient(to right, #000428, #004e92) 1;
+  border-top: none;
+}
+
+#resultLive {
+  font-size: large;
+  color:red;
+}
+
+#teamLive{
+  font-size: medium;
+}
+
+#timeLive{
+  text-align: left;
+}
+#placeLive{
+  text-align: right;
+}
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -75,7 +106,7 @@
 #league-navbar {
   background-color: #ccc;
   border-radius: 0 0 10px 10px;
-  background-image: linear-gradient(to right, #4d74a7, #4f8bc0);;
+  background-image: linear-gradient(to right, #4d74a7, #4f8bc0);
 }
 
 #league-navbar a.active {

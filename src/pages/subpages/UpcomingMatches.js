@@ -41,7 +41,7 @@ export default function UpcomingMatches() {
                                     <th scope="col" className="text-center">Round</th>
                                 </tr>
                             </thead>
-                        {matches && matches.map((match) => {
+                        {matches && matches.reverse().map((match) => {
                             return (
                                 <tbody>
                                     <tr>
