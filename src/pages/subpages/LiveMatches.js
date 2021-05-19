@@ -38,7 +38,7 @@ export default function LiveMatches() {
                             <h5 className="title-h1">       
                                 No matches currently being played.
                                 <br />
-                                <NavLink  className="nav-link" to={leagueURL + "/upcoming"}>Check following matches! </NavLink>
+                                <NavLink  className="nav-link" to={leagueURL + "/upcoming"}>Check following matches!</NavLink>
                             </h5>
                         </>
                         )}  
