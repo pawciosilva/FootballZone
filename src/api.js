@@ -25,6 +25,15 @@ export const getPlayer = (playerId) => {
   return instance.get("", { params });
 };
 
+export const getPlayerDetails = async (playerId) => {
+  const response = await getPlayer(playerId);
+  const player = response.data.result;
+  //const logoName = player.team_name.replace(/\s+/g, "-").toLowerCase();
+  //player.team_logo = `https://allsportsapi.com/logo/${player.team_key}_${logoName}`;
+
+  return player;
+};
+
 export const getTopScorersWithStats = async (leagueId) => {
   const topScorerResponse = await getTopScorers(leagueId);
   const playerIds = topScorerResponse.data.result.map((player) => player.player_key).slice(0, 20);

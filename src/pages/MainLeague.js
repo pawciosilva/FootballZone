@@ -1,6 +1,7 @@
 import { NavLink, Route, useLocation } from "react-router-dom";
 import LiveMatches from "./subpages/LiveMatches";
 import PlayersStatistics from "./subpages/PlayersStatistics";
+import PlayerDetails from "./subpages/PlayerDetails";
 import Table from "./subpages/Table";
 import UpcomingMatches from "./subpages/UpcomingMatches";
 import bundesliga from "../assets/bundesliga.png";
@@ -68,6 +69,9 @@ export default function MainLeague() {
         </Route>
         <Route path={"/" + leagueUrl + "/playerstats"}>
           <PlayersStatistics />
+        </Route>
+        <Route path={"/" + leagueUrl + "/player"}>
+          <PlayerDetails />
         </Route>
       </div>
     );

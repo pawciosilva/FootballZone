@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { NavLink } from "react-router-dom";
 import { getTopScorersWithStats } from "../../api";
 
 export default function PlayersStatistics() {
@@ -7,11 +8,12 @@ export default function PlayersStatistics() {
   const location = useLocation();
 
   let leagueKey = 0;
-  if (location.pathname.includes("bundesliga")) leagueKey = 195;
-  if (location.pathname.includes("ligue1")) leagueKey = 176;
-  if (location.pathname.includes("seriea")) leagueKey = 262;
-  if (location.pathname.includes("laliga")) leagueKey = 468;
-  if (location.pathname.includes("premierleague")) leagueKey = 148;
+  let leagueUrl = "";
+  if (location.pathname.includes("bundesliga")) { leagueUrl="bundesliga"; leagueKey = 195;}
+  if (location.pathname.includes("ligue1")) { leagueUrl="ligue1"; leagueKey = 176;}
+  if (location.pathname.includes("seriea")) { leagueUrl="seriea"; leagueKey = 262;}
+  if (location.pathname.includes("laliga")) { leagueUrl="laliga"; leagueKey = 468;}
+  if (location.pathname.includes("premierleague")) { leagueUrl="premierleague"; leagueKey = 148;}
 
   useEffect(() => {
     getTopScorersWithStats(leagueKey).then((topScorers) => {
@@ -55,6 +57,7 @@ export default function PlayersStatistics() {
             {players.map(
               (
                 {
+                  player_key,
                   player_name,
                   team_name,
                   team_logo,
@@ -68,7 +71,7 @@ export default function PlayersStatistics() {
               ) => (
                 <tr scope="row" key={index}>
                   <td className="text-center align-middle">{index + 1}</td>
-                  <td className="text-center align-middle fw-bold">{player_name}</td>
+                  <td className="text-center align-middle fw-bold"><NavLink className="nav-link" to={"/" + leagueUrl + "/player/" + player_key}>{player_name}</NavLink></td>
                   <td className="d-flex flex-column align-items-center text-center">
                     <img class="upcoming-img mx-2" src={team_logo} alt="logo"></img>
                     {team_name}
