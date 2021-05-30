@@ -3,6 +3,7 @@ import React from 'react'
 import { BrowserRouter, Switch,  Route } from 'react-router-dom';
 import Home from './pages/Home';
 import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
 import MainLeague from './pages/MainLeague';
 
 export default function App() {
@@ -21,6 +22,7 @@ export default function App() {
               <Route path="/bundesliga" component={MainLeague}/>
               </>
            </Switch>
+           <FooterComponent/>
         </BrowserRouter>
         
       </div>
