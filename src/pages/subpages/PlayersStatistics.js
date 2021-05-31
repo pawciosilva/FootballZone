@@ -38,36 +38,68 @@ export default function PlayersStatistics() {
 
   return (
     <>
-      <div className="container my-5 text-center">
-        <div className="row justify-content-center">
-          <div className="col-md-12 col-lg-10">
-            <table class="table mt-4" id="league-table">
-              <thead>
-                <tr>
-                  <th scope="col" className="text-center align-middle">
-                    No
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Name
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Team
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Position
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Matches
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Yellow cards
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Red cards
-                  </th>
-                  <th scope="col" className="text-center align-middle">
-                    Goals
-                  </th>
+      <div className="container my-5 px-0">
+        <table className="table table-responsive-lg" id="league-table">
+          <thead>
+            <tr>
+              <th scope="col" className="text-center align-middle">
+                No
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Name
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Team
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Position
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Matches
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Yellow cards
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Red cards
+              </th>
+              <th scope="col" className="text-center align-middle">
+                Goals
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {players.map(
+              (
+                {
+                  player_key,
+                  player_name,
+                  team_name,
+                  team_logo,
+                  player_type,
+                  player_match_played,
+                  player_yellow_cards,
+                  player_red_cards,
+                  player_goals,
+                },
+                index
+              ) => (
+                <tr scope="row" key={index}>
+                  <td className="text-center align-middle">{index + 1}</td>
+                  <td className="text-center align-middle fw-bold">
+                    <NavLink className="nav-link" to={"/" + leagueUrl + "/player/" + player_key}>
+                      {player_name}
+                    </NavLink>
+                  </td>
+                  <td className="d-flex flex-column align-items-center text-center">
+                    <img class="upcoming-img mx-2" src={team_logo} alt="logo"></img>
+                    {team_name}
+                  </td>
+                  <td className="text-center align-middle">{player_type}</td>
+                  <td className="text-center align-middle">{player_match_played}</td>
+                  <td className="text-center align-middle">{player_yellow_cards}</td>
+                  <td className="text-center align-middle">{player_red_cards}</td>
+                  <td className="text-center align-middle fw-bold">{player_goals}</td>
                 </tr>
               </thead>
               <tbody>
