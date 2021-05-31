@@ -77,7 +77,7 @@
 }
 
 #resultLive {
-  font-size: large;
+  font-size: x-large;
   color:red;
 }
 
@@ -90,6 +90,12 @@
 }
 #placeLive{
   text-align: right;
+}
+
+#liveLogo{
+ max-width: 120px;
+ margin-top: 5px;
+ margin-bottom: 5px;
 }
 
 

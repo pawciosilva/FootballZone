@@ -5,7 +5,7 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use((config) => {
-  config.params["APIkey"] = "8bb83d3da9b2342d32b27285da51cdf470346a203963d84c0d968647032480ce";
+  config.params["APIkey"] = "91cbd935641f7cac61718db466ad1874b7b30cecc93ab84e8ab0200d95a66463";
   return config;
 });
 
@@ -73,6 +73,14 @@ export const getTeams = (leagueId) => {
   const params = { met: "Teams" };
   if (leagueId) {
     params.leagueId = leagueId;
+  }
+  return instance.get("", { params });
+};
+
+export const getTeam = (teamId) => {
+  const params = { met: "Teams" };
+  if (teamId) {
+    params.teamId = teamId;
   }
   return instance.get("", { params });
 };
