@@ -122,12 +122,36 @@ export const getTeamComparison = async (firstTeamId, secondTeamId) => {
   params.secondTeamId = secondTeamId;
 
   const response = await instance.get("", { params });
+  const data = response.data.result;
 
-  const result = response.data.result.H2H.map((item) => {
+  const matches = data.H2H.map((item) => {
     item.home_team_logo = getLogoUrl(item.home_team_key, item.event_home_team);
     item.away_team_logo = getLogoUrl(item.away_team_key, item.event_away_team);
     return item;
   });
+
+  const homeTeamName =
+    data.firstTeamResults[0].home_team_key === firstTeamId
+      ? data.firstTeamResults[0].event_home_team
+      : data.firstTeamResults[0].event_away_team;
+  const awayTeamName =
+    data.secondTeamResults[0].home_team_key === secondTeamId
+      ? data.secondTeamResults[0].event_home_team
+      : data.secondTeamResults[0].event_away_team;
+
+  const home_team = {
+    name: homeTeamName,
+    logo: getLogoUrl(firstTeamId, homeTeamName),
+  };
+  const away_team = {
+    name: awayTeamName,
+    logo: getLogoUrl(secondTeamId, awayTeamName),
+  };
+  const result = {
+    matches,
+    home_team,
+    away_team,
+  };
   return result;
 };
 //, isOtherParams) =>

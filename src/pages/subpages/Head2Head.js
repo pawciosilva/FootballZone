@@ -14,23 +14,12 @@ export default function Head2Head() {
     const fetchData = async () => {
       try {
         const result = await getTeamComparison(teamId1, teamId2);
-        setMatches(result);
-        setTeams(() => {
-          if (result[0].home_team_key === teamId1) {
-            return {
-              homeTeamName: result[0].event_home_team,
-              homeTeamLogo: result[0].home_team_logo,
-              awayTeamName: result[0].event_away_team,
-              awayTeamLogo: result[0].away_team_logo,
-            };
-          } else {
-            return {
-              homeTeamName: result[0].event_away_team,
-              homeTeamLogo: result[0].away_team_logo,
-              awayTeamName: result[0].event_home_team,
-              awayTeamLogo: result[0].home_team_logo,
-            };
-          }
+        setMatches(result.matches);
+        setTeams({
+          homeTeamName: result.home_team.name,
+          homeTeamLogo: result.home_team.logo,
+          awayTeamName: result.away_team.name,
+          awayTeamLogo: result.away_team.logo,
         });
       } catch (e) {
         console.log(e);
@@ -74,7 +63,7 @@ export default function Head2Head() {
 
   return (
     <div className="container my-3 px-0">
-      {matches.length > 0 && teams && stats && (
+      {teams && (
         <div className="row justify-content-center mx-0">
           <div className="row col-lg-10">
             <div className="container">
