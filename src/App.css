@@ -45,7 +45,7 @@
 
 #headerNavBar{
   border-radius: 5px;
-  background-image: linear-gradient(to right, #000428, #004e92);
+  background-image: linear-gradient(to right, rgb(0, 4, 40), rgb(0, 78, 146));
 }
 
 #headerNavBar a.active{
@@ -156,4 +156,12 @@
 
 .league-logo {
   width: 400px;
+}
+
+.photo-header {
+  height: 600px;
+  background-image: linear-gradient(rgba(0, 4, 40, 0.5), rgba(0, 78, 146, 0.5)),
+    url("https://everythingbarca.com/wp-content/uploads/getty-images/2018/03/650182848-fc-barcelona-v-paris-saint-germain-uefa-champions-league-round-of-16-second-leg.jpg.jpg");
+  background-size: cover;
+  background-position: 10%;
 }
