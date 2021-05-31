@@ -24,7 +24,7 @@ export default function PlayersStatistics() {
   return (
     <>
       <div className="container my-5 px-0">
-        <table class="table table-responsive-lg" id="league-table">
+        <table className="table table-responsive-lg" id="league-table">
           <thead>
             <tr>
               <th scope="col" className="text-center align-middle">
@@ -71,7 +71,11 @@ export default function PlayersStatistics() {
               ) => (
                 <tr scope="row" key={index}>
                   <td className="text-center align-middle">{index + 1}</td>
-                  <td className="text-center align-middle fw-bold"><NavLink className="nav-link" to={"/" + leagueUrl + "/player/" + player_key}>{player_name}</NavLink></td>
+                  <td className="text-center align-middle fw-bold">
+                    <NavLink className="nav-link" to={"/" + leagueUrl + "/player/" + player_key}>
+                      {player_name}
+                    </NavLink>
+                  </td>
                   <td className="d-flex flex-column align-items-center text-center">
                     <img class="upcoming-img mx-2" src={team_logo} alt="logo"></img>
                     {team_name}

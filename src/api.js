@@ -27,10 +27,9 @@ export const getPlayer = (playerId) => {
 
 export const getPlayerDetails = async (playerId) => {
   const response = await getPlayer(playerId);
-  const player = response.data.result;
-  //const logoName = player.team_name.replace(/\s+/g, "-").toLowerCase();
-  //player.team_logo = `https://allsportsapi.com/logo/${player.team_key}_${logoName}`;
+  const player = response.data.result.pop();
 
+  player.team_logo = getLogoUrl(player.team_key, player.team_name);
   return player;
 };
 
@@ -48,8 +47,7 @@ export const getTopScorersWithStats = async (leagueId) => {
     const topScorer = result.find((player) => teamIds.includes(player.team_key));
     if (!topScorer) continue;
 
-    const logoName = topScorer.team_name.replace(/\s+/g, "-").toLowerCase();
-    topScorer.team_logo = `https://allsportsapi.com/logo/${topScorer.team_key}_${logoName}`;
+    topScorer.team_logo = getLogoUrl(topScorer.team_key, topScorer.team_name);
     topScorers.push(topScorer);
   }
   return topScorers.sort((a, b) => b.player_goals - a.player_goals);
@@ -118,11 +116,19 @@ export const getFixtures = (
   return instance.get("", { params });
 };
 
-export const getTeamComparison = (firstTeamId, secondTeamId) => {
+export const getTeamComparison = async (firstTeamId, secondTeamId) => {
   const params = { met: "H2H" };
   params.firstTeamId = firstTeamId;
   params.secondTeamId = secondTeamId;
-  return instance.get("", { params });
+
+  const response = await instance.get("", { params });
+
+  const result = response.data.result.H2H.map((item) => {
+    item.home_team_logo = getLogoUrl(item.home_team_key, item.event_home_team);
+    item.away_team_logo = getLogoUrl(item.away_team_key, item.event_away_team);
+    return item;
+  });
+  return result;
 };
 //, isOtherParams) =>
 const getDateParams = (startDate, endDate) => {
@@ -144,3 +150,8 @@ const getDateParams = (startDate, endDate) => {
   return { from: formatDate(startDate), to: formatDate(endDate) };
 };
 const formatDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+
+const getLogoUrl = (teamKey, teamName) => {
+  const logoName = teamName.replace(/\s+/g, "-").toLowerCase();
+  return `https://allsportsapi.com/logo/${teamKey}_${logoName}`;
+};
