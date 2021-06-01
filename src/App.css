@@ -69,6 +69,15 @@
   color: white;
 }
 
+#headerPlayer{
+  background-image: linear-gradient(to left, #000428, #004e92);
+  border-radius: 7px;
+  border-bottom: none;  
+  margin: 10px;
+  padding-top: 10px;
+  color: white;
+}
+
 #liveFooter{
   border-width: 2px;
   border-style: solid;

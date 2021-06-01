@@ -17,12 +17,15 @@ export default function PlayersStatistics() {
     });
   }, [playerId]);
 
-  //console.log(player);
-
   return (
-    <>
       <div className="container my-5 px-0">
-          <h4>{player.player_name}</h4>  
+        <div id="headerPlayer">
+        <div className="row align-items-center mb-5">
+          <h2 className="col-sm col-12 mb-sm-0 mb-3 d-flex flex-column align-items-center justify-content-center">{player.player_name}</h2>  
+          <h5 className="col-sm col-12 d-flex flex-column align-items-center justify-content-center">Number: {player.player_number}</h5>  
+          <h5 className="col-sm col-12 d-flex flex-column align-items-center justify-content-center">Position: {player.player_type}</h5>
+        </div>
+        </div>
           <table class="table table-responsive-lg" id="league-table">
           <thead>
           <tr>
@@ -31,9 +34,6 @@ export default function PlayersStatistics() {
               </th>
               <th scope="col" className="text-center align-middle">
                 Goals
-              </th>
-              <th scope="col" className="text-center align-middle">
-                Assists
               </th>
               <th scope="col" className="text-center align-middle">
                 Yellow cards
@@ -47,15 +47,12 @@ export default function PlayersStatistics() {
                 <tr scope="row" key={0}>
                   <td className="text-center align-middle">{player.player_match_played}</td>
                   <td className="text-center align-middle ">{player.player_goals}</td>
-                  <td className="text-center align-middle ">{player.player_assists}</td>
                   <td className="text-center align-middle ">{player.player_yellow_cards}</td>
                   <td className="text-center align-middle ">{player.player_red_cards}</td>
                 </tr>
           </tbody>
         </table>
-          <h5>{player.team_name}</h5>  
-          <p>Position: {player.player_type}</p>
+        <img class="upcoming-img mx-2 " src={player.team_logo} alt="logo"></img>{player.team_name} 
       </div>
-    </>
   );
 }
