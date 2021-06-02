@@ -6,22 +6,22 @@ export default function FooterComponent() {
           <h5>Bla bla</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Cool stuff
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Random feature
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Team feature
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Stuff for developers
               </a>
             </li>
@@ -31,22 +31,22 @@ export default function FooterComponent() {
           <h5>Bla bla bla</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Resource
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Resource name
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Another resource
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Final resource
               </a>
             </li>
@@ -56,22 +56,22 @@ export default function FooterComponent() {
           <h5>Bla bla bla</h5>
           <ul class="list-unstyled text-small">
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Team
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Locations
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Privacy
               </a>
             </li>
             <li class="mb-1">
-              <a class="link-secondary text-decoration-none" href="#">
+              <a class="link-secondary text-decoration-none" href="https://google.com">
                 Terms
               </a>
             </li>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { NavLink } from "react-router-dom";
 import { getStandings } from "../../api";
 
 export default function Table() {
@@ -7,11 +8,27 @@ export default function Table() {
   const location = useLocation();
 
   let leagueKey = 0;
-  if (location.pathname.includes("bundesliga")) leagueKey = 195;
-  if (location.pathname.includes("ligue1")) leagueKey = 176;
-  if (location.pathname.includes("seriea")) leagueKey = 262;
-  if (location.pathname.includes("laliga")) leagueKey = 468;
-  if (location.pathname.includes("premierleague")) leagueKey = 148;
+  var leagueUrl = "";
+  if (location.pathname.includes("bundesliga")) {
+    leagueKey = 195;
+    leagueUrl = "bundesliga";
+  }
+  if (location.pathname.includes("ligue1")) {
+    leagueKey = 176;
+    leagueUrl = "ligue1";
+  }
+  if (location.pathname.includes("seriea")) {
+    leagueKey = 262;
+    leagueUrl = "seriea";
+  }
+  if (location.pathname.includes("laliga")) {
+    leagueKey = 468;
+    leagueUrl = "laliga";
+  }
+  if (location.pathname.includes("premierleague")) {
+    leagueKey = 148;
+    leagueUrl = "premierleague";
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +80,12 @@ export default function Table() {
                           {team.standing_place}.
                         </td>
                         <td className="text-center fw-bold">
-                          {team.standing_team}
+                          <NavLink
+                            className="nav-link"
+                            to={"/" + leagueUrl + "/team/" + team.team_key}
+                          >
+                            {team.standing_team}
+                          </NavLink>
                         </td>
                         <td className="text-center">{team.standing_PTS}</td>
                         <td className="text-center">{team.standing_W}</td>
