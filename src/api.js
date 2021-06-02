@@ -75,6 +75,15 @@ export const getTeams = (leagueId) => {
   return instance.get("", { params });
 };
 
+export const getTeam = (teamId) => {
+  const params = { met: "Teams" };
+  if (teamId) {
+    params.teamId = teamId;
+  }
+  return instance.get("", { params });
+};
+
+
 export const getLiveScores = async (leagueId) => {
   const params = { met: "Livescore" };
   if (leagueId) {
