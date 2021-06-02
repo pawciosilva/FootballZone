@@ -9,6 +9,7 @@ import laliga from "../assets/laliga.png";
 import seriea from "../assets/seriea.png";
 import ligue1 from "../assets/ligue1.png";
 import premierleague from "../assets/premierleague.png";
+import TeamDetails from "./subpages/TeamDetails";
 
 //leagueId = 176
 
@@ -33,7 +34,10 @@ export default function MainLeague() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={"/" + leagueUrl + "/livematches"}>
+              <NavLink
+                className="nav-link"
+                to={"/" + leagueUrl + "/livematches"}
+              >
                 Live Matches
               </NavLink>
             </li>
@@ -43,7 +47,10 @@ export default function MainLeague() {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to={"/" + leagueUrl + "/playerstats"}>
+              <NavLink
+                className="nav-link"
+                to={"/" + leagueUrl + "/playerstats"}
+              >
                 Players Statistics
               </NavLink>
             </li>
@@ -72,6 +79,9 @@ export default function MainLeague() {
         </Route>
         <Route path={"/" + leagueUrl + "/player"}>
           <PlayerDetails />
+        </Route>
+        <Route path={"/" + leagueUrl + "/team"}>
+          <TeamDetails />
         </Route>
       </div>
     );
