@@ -86,7 +86,12 @@ export default function Table() {
                             {team.standing_place}.
                           </td>
                           <td className="text-center fw-bold">
-                            {team.standing_team}
+                            <NavLink
+                              className="nav-link"
+                              to={"/" + leagueUrl + "/team/" + team.team_key}
+                            >
+                              {team.standing_team}
+                            </NavLink>
                           </td>
                           <td className="text-center">{team.standing_PTS}</td>
                           <td className="text-center">{team.standing_W}</td>
