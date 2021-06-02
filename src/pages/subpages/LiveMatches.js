@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import { NavLink } from "react-router-dom";
-import { getLiveScores, getTeam } from "../../api";
+import { getLiveScores } from "../../api";
 
 export default function LiveMatches() {
     const [liveMatches, setLiveMatches] = useState([]);
-    const [playingTeams, setPlayingTeams] = useState([]);
     const location = useLocation();
 
-    var teamsID = [];
     var statistic = ["Ball Possession", "Goal Attempts", "Shots on Goal", "Shots off Goal", "Free Kicks", "Corner Kicks", "Fouls"]
     let leagueKey = 0;
     let leagueURL = "";
@@ -20,27 +18,12 @@ export default function LiveMatches() {
 
     useEffect(() => {
         getLiveScores(undefined).catch(err => console.error(err))
-            .then(response => setLiveMatches(response.data.result))
-    }, []);
-
-    liveMatches.forEach(match => {
-        teamsID.push(match.home_team_key);
-        teamsID.push(match.away_team_key);
-    })
-
-    useEffect(() => {
-        if (teamsID) {
-            teamsID.forEach(id => {
-                getTeam(id).catch(err => console.error(err))
-                    .then(response => setPlayingTeams(playingTeams.push(response.data.result[0])));
-            })
-        }
+            .then(response => setLiveMatches(response));
     }, []);
 
 
     return (
         <div className="container my-5 text-center">
-            {console.log(playingTeams)}
             <div className="row justify-content-center">
                 <div className="col-md-12 col-lg-10">
                     {!liveMatches && (
@@ -62,31 +45,11 @@ export default function LiveMatches() {
                             <div className="row mx-auto my-1 text-center justify-content-center" id="headerLive">
                                 <div id="teamLive" className="text-center col-3 fw-bold d-flex align-items-center justify-content-center">{match.event_home_team}</div>
                                 <div id="liveLogo" className="col-2 d-flex align-items-center justify-content-center">
-
-                                    {playingTeams &&
-                                        playingTeams.forEach((team) => {
-                                            // console.log(match.event_home_team)
-                                            // console.log(team.team_name + " : " + team.team_key);
-                                            if (team.team_key === match.home_team_key) {
-                                                return (
-                                                    <img className="w-75" key={team.team_key} src={team.team_logo} alt="logo"></img>
-                                                )
-                                            }
-                                        })
-
-                                    }
+                                <img className="w-75" src={match.home_team_logo} alt="logo"></img>
                                 </div>
                                 <div id="resultLive" className="col-2  d-flex align-items-center justify-content-center" >{match.event_final_result}</div>
                                 <div id="liveLogo" className="col-2 d-flex align-items-center justify-content-center">
-                                    {playingTeams &&
-                                        playingTeams.forEach((team) => {
-                                            if (team.team_key === match.away_team_key) {
-                                                return (
-                                                    <img className="w-75" key={team.team_key} src={team.team_logo} alt="logo"></img>
-                                                )
-                                            }
-                                        })
-                                    }
+                                <img className="w-75" src={match.away_team_logo} alt="logo"></img>      
                                 </div>
                                 <div id="teamLive" className=" text-center col-3 fw-bold d-flex align-items-center justify-content-center"> {match.event_away_team}</div>
                             </div>

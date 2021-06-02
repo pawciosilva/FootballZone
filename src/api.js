@@ -75,22 +75,22 @@ export const getTeams = (leagueId) => {
   return instance.get("", { params });
 };
 
-export const getTeam = (teamId) => {
-  const params = { met: "Teams" };
-  if (teamId) {
-    params.teamId = teamId;
-  }
-  return instance.get("", { params });
-};
-
-export const getLiveScores = (leagueId) => {
+export const getLiveScores = async (leagueId) => {
   const params = { met: "Livescore" };
   if (leagueId) {
     params.leagueId = leagueId;
   }
+  
+  const response = await instance.get("", { params });
+  const data = response.data.result;
+  
+  data.forEach(element => {
+    element.home_team_logo = getLogoUrl(element.home_team_key,element.event_home_team);
+    element.away_team_logo = getLogoUrl(element.away_team_key,element.event_away_team );
+  });
 
-  return instance.get("", { params });
-};
+  return data;
+}
 
 export const getFixtures = (
   startDate = new Date(),
@@ -183,7 +183,7 @@ const getDateParams = (startDate, endDate) => {
 };
 const formatDate = (date) => `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 
-const getLogoUrl = (teamKey, teamName) => {
+ const getLogoUrl = (teamKey, teamName) => {
   const logoName = teamName.replace(/\s+/g, "-").toLowerCase();
   return `https://allsportsapi.com/logo/${teamKey}_${logoName}`;
 };
