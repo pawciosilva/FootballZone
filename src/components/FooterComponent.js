@@ -38,7 +38,7 @@ export default function FooterComponent() {
           </ul>
         </div>
         <div class="col-6 col-md my-5">
-          <h3>Made by GSMWTR &#169;</h3>
+          <h3>Made by GSMWTR sp. z o.o. &#169;</h3>
           <h5>2021</h5>
         </div>
       </div>
